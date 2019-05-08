@@ -4,24 +4,30 @@
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.util.Log;
+import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+    public class MainActivity extends AppCompatActivity {
 
     public EditText pantalla;
-    public double operador1, operador2, resultado;
+    public double operando1, operando2, resultado;
     int operacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        pantalla = (EditText)findViewById(R.id.caja);
+        pantalla = (EditText) findViewById(R.id.caja);
     }
 
+
     public void btn1(View v) {
-        String valor =  pantalla.getText().toString();
-        valor =  valor + "1";
+        String valor;
+        valor = pantalla.getText().toString();
+        valor =  valor+"1";
         pantalla.setText(valor);
+
     }
 
     public void btn2(View v) {
@@ -62,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void btn8(View v) {
         String valor =  pantalla.getText().toString();
-        valor =  valor + "8";
+        valor =  valor+"8";
         pantalla.setText(valor);
     }
 
@@ -87,27 +93,27 @@ public class MainActivity extends AppCompatActivity {
 
     public void suma(View v) {
         try{
-            String aux1 =  pantalla.getText.toString();
+            String aux1 =  pantalla.getText().toString();
             operando1 = Double.parseDouble(aux1);
-        } catch(NumberFormatException) {}
+        } catch(NumberFormatException e) {}
         pantalla.setText("");
         operacion = 1;
     }
 
     public void resta(View v) {
         try{
-            String aux1 =  pantalla.getText.toString();
+            String aux1 =  pantalla.getText().toString();
             operando1 = Double.parseDouble(aux1);
-        } catch(NumberFormatException) {}
+        } catch(NumberFormatException e) {}
         pantalla.setText("");
         operacion = 2;
     }
 
     public void multiplicacion(View v) {
         try{
-            String aux1 =  pantalla.getText.toString();
+            String aux1 =  pantalla.getText().toString();
             operando1 = Double.parseDouble(aux1);
-        } catch(NumberFormatException) {}
+        } catch(NumberFormatException e) {}
         pantalla.setText("");
         operacion = 3;
     }
@@ -115,73 +121,62 @@ public class MainActivity extends AppCompatActivity {
 
     public void divicion(View v) {
         try{
-            String aux1 =  pantalla.getText.toString();
+            String aux1 =  pantalla.getText().toString();
             operando1 = Double.parseDouble(aux1);
-        } catch(NumberFormatException) {}
+        } catch(NumberFormatException e) {}
         pantalla.setText("");
         operacion = 4;
     }
 
     public void potencia(View v) {
         try{
-            String aux1 =  pantalla.getText.toString();
+            String aux1 =  pantalla.getText().toString();
             operando1 = Double.parseDouble(aux1);
-        } catch(NumberFormatException) {}
+        } catch(NumberFormatException e) {}
         pantalla.setText("");
         operacion = 5;
     }
 
     public void porcentaje(View v) {
         try{
-            String aux1 =  pantalla.getText.toString();
+            String aux1 =  pantalla.getText().toString();
             operando1 = Double.parseDouble(aux1);
-        } catch(NumberFormatException) {}
+        } catch(NumberFormatException e) {}
         pantalla.setText("");
         operacion = 6;
     }
 
     public void igual(View v) {
         try{
-            String aux2 =  pantalla.getText.toString();
+            String aux2 =  pantalla.getText().toString();
             operando2 = Double.parseDouble(aux2);
-        } catch(NumberFormatException) {}
+        } catch(NumberFormatException e) {}
         pantalla.setText("");
-        operaciones();
-    }
-
-    public void clear(View v) {
-        pantalla.setText("");
-        operador1 = 0.0;
-        operador2 = 0.0;
-        resultado = 0;
-    }
-
-    public  void finish(View v) {
-        finish();
-    }
-
-    /*
-     * Operaciones
-     */
-
-    public void operaciones() {
 
         if (operacion == 1) {
             resultado = operando1 + operando2;
         } else if (operacion == 2) {
-            resultado =  operador1 -  operador2;
-        } else if (operando == 3) {
-            resultado  =  operador1 *  operador2;
-        } else if (operando == 4) {
-            if (operador2 == 0) {
+            resultado =  operando1 -  operando2;
+        } else if (operacion == 3) {
+            resultado  =  operando1 *  operando2;
+        } else if (operacion == 4) {
+            if (operando2 == 0) {
                 pantalla.setText("Error, no es posible dividir con el 0");
             } else {
-                resultado = operador1 / operador2;
+                resultado = operando1 / operando2;
             }
         } else if (operacion == 5) {
-            resultado =  Math.pow(operador1, operador2);
+            resultado =  Math.pow(operando1, operando2);
         } else if (operacion == 6) {
-            resultado = operador1 / 100.0;
+            resultado = operando1 / 100.0;
         }
     }
+
+    public void clear(View v) {
+        pantalla.setText("");
+        operando1 = 0.0;
+        operando2 = 0.0;
+        resultado = 0;
+    }
+
 }
